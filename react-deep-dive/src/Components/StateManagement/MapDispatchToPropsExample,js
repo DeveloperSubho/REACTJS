@@ -1,0 +1,31 @@
+// Helper function to create a unique ID
+const getPseudoRandomId = () =>
+  Math.random()
+    .toString(36)
+    .slice(-6);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: (text) =>
+      dispatch({
+        type: 'ADD_TODO',
+        payload: {
+          id: getPseudoRandomId(),
+          text,
+        },
+      }),
+    removeTodo: (id) =>
+      dispatch({
+        type: 'REMOVE_TODO',
+        payload: id,
+      }),
+    changeStatus: (id, done) =>
+      dispatch({
+        type: 'CHANGE_TODO_STATUS',
+        payload: {
+          id,
+          done,
+        },
+      }),
+  };
+};
